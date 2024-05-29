@@ -16,6 +16,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Show Python Environment
+      id: show-python
+      shell: bash
+      run: |
+        echo "Current Python version:"
+        python --version
     - name: Upgrading Pip
       id: pip-upgrade
       shell: bash

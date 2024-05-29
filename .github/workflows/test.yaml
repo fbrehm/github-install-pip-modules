@@ -14,6 +14,7 @@ jobs:
     container: ${{ matrix.container }}
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
     - id: action_with_all
       uses: ./.github/..
       with:
