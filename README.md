@@ -14,12 +14,24 @@ It performs the following things:
 
 ```yaml
   steps:
-    - uses: actions/checkout@v
+    - uses: actions/checkout@v4
     - uses: fbrehm/prepare-debian-container@v1
     - uses: fbrehm/github-install-pip-modules
+      with:
+        install_pytest: true
 ```
 
 ## Inputs
 
-This action has no inputs.
+```yaml
+inputs:
+  install_pytest:
+    description: Should pytest be installed.
+    required: false
+    default: false
+  install_linter_tools:
+    description: Should linter tools like pylint, flake8, shellcheck a.s.o be installed.
+    required: false
+    default: false
+```
 
