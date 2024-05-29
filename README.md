@@ -10,6 +10,8 @@ It performs the following things:
 ** flake8
 ** pylint
 
+It may be only used on python-images.
+
 ## Example
 
 ```yaml
