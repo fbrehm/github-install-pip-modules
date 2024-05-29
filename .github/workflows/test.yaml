@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     if: github.event_name != 'pull_request' || !contains('OWNER,MEMBER,COLLABORATOR', github.event.pull_request.author_association)
-    name: Test ${{ matrix.container }}
+    name: Test Python${{ matrix.python_version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

@@ -61,7 +61,7 @@ runs:
         else
           echo "Installing shellcheck and yamllint ..."
           if type -p apt >/dev/null; then
-            apt --yes shellcheck yamllint
+            apt install --yes shellcheck yamllint
           elif type -p dnf >/dev/null; then
             dnf --assumeyes install ShellCheck yamllint
           elif type -p yum >/dev/null; then
