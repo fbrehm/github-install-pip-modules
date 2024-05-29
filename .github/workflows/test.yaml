@@ -1,0 +1,23 @@
+---
+name: Test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    if: github.event_name != 'pull_request' || !contains('OWNER,MEMBER,COLLABORATOR', github.event.pull_request.author_association)
+    name: Test ${{ matrix.container }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container: ['debian:bookworm', 'debian:trixie', 'ubuntu:jammy', 'ubuntu:noble', 'dokken/centos-stream-9']
+    container: ${{ matrix.container }}
+    steps:
+    - uses: actions/checkout@v4
+    - id: action_with_all
+      uses: ./.github/..
+      with:
+        install_pytest: true
+        install_linter_tools: true
+
+# vim: et tabstop=2 expandtab shiftwidth=2 softtabstop=2 list
