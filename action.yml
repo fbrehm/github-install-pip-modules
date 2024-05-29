@@ -69,12 +69,12 @@ runs:
             pip install --upgrade --upgrade-strategy eager --requirement requirements-lint.txt
           fi
         fi
-      - name: Show installed Python modules
-        id: show-py-modules
-        shell: bash
-        run: |
-          echo "All installed Python modules:"
-          pip list --format columns
+    - name: Show installed Python modules
+      id: show-py-modules
+      shell: bash
+      run: |
+        echo "All installed Python modules:"
+        pip list --format columns
 
 
 # vim: et tabstop=2 expandtab shiftwidth=2 softtabstop=2 list
