@@ -9,27 +9,26 @@ jobs:
     name: Test ${{ matrix.container }}
     runs-on: ubuntu-latest
     strategy:
-    strategy:
       fail-fast: false
       matrix:
         container: ['debian:bookworm', 'debian:trixie', 'ubuntu:jammy', 'ubuntu:noble', 'dokken/centos-stream-9']
     container: ${{ matrix.container }}
     steps:
-    - uses: actions/checkout@v4
-    - name: Install Python3
-      id: inst-python
-      shell: bash
-      run: |
-        echo "Installing Python3 ..."
-        if type -p apt >/dev/null; then
-          apt --yes --no-install-recommends python3-all python3-pip
-        else
-          dnf --assumeyes install python3 python3-pip
-        fi
-    - id: action_with_all
-      uses: ./.github/..
-      with:
-        install_pytest: true
-        install_linter_tools: true
+      - uses: actions/checkout@v4
+      - name: Install Python3
+        id: inst-python
+        shell: bash
+        run: |
+          echo "Installing Python3 ..."
+          if type -p apt >/dev/null; then
+            apt --yes --no-install-recommends python3-all python3-pip
+          else
+            dnf --assumeyes install python3 python3-pip
+          fi
+      - id: action_with_all
+        uses: ./.github/..
+        with:
+          install_pytest: true
+          install_linter_tools: true
 
 # vim: et tabstop=2 expandtab shiftwidth=2 softtabstop=2 list
