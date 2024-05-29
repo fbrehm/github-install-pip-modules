@@ -21,8 +21,10 @@ jobs:
         run: |
           echo "Installing Python3 ..."
           if type -p apt >/dev/null; then
+            apt update
             apt install --yes --no-install-recommends python3-all python3-pip
           else
+            dnf makecache
             dnf --assumeyes install python3 python3-pip
           fi
       - id: action_with_all

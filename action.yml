@@ -21,7 +21,7 @@ runs:
       shell: bash
       run: |
         echo "Current Python version:"
-        python --version
+        python3 --version
     - name: Upgrading Pip
       id: pip-upgrade
       shell: bash
